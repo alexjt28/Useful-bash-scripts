@@ -25,8 +25,8 @@ module load nco
 ## VIM Command Editor -> :%s/change_from/change_to/
 
 #-----------------------------------------------------------------------------------------------------------
-# Example used in this file is calculating a climatology file from years 91-100 of the following iCESM case:
-# b.e12.B1850C5.f19_g16.i06ka.07.pop {0101 - 0110}
+# Example used in this file is making a time series file from years 91-100 of the following iCESM case:
+# Case: b.e12.B1850C5.f19_g16.i06ka.07.pop {0101 - 0110}
 # Years: 101,102,103,104,105,106,107,108,109,110
 #-----------------------------------------------------------------------------------------------------------
 
