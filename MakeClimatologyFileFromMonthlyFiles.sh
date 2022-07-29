@@ -14,6 +14,10 @@
 
 echo "Here we go..."
 
+## If performing this task on an NCAR Supercomputer, must first load NCO module 
+
+module load nco
+
 ## To change text...
 ## VIM Editor Command -> :%s/12ka.01/12ka.01/
 
