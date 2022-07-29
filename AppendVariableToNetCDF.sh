@@ -24,7 +24,7 @@ module load nco
 # Case: b.e12.B1850C5.f19_g16.i06ka.04
 #---------------------------------------------------------------------------------------------------------------------------------------
 
-## Convert time series file to netCDF3 so the "ncks" command will work with it
+## Convert final time series file to netCDF3 so the "ncks" command will work with it
 ncks -3 b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.timeseries_of_all_vars.0301-0400.nc b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.timeseries_of_all_vars.0301-0400.nc
 
 echo "Converted to netCDF3"
