@@ -10,6 +10,8 @@
 # File name: MakeClimatologyFileFromMonthlyFiles.sh
 #----------------------------------------------------------------------
 
+## Move this file into the directory that contains the monthly files
+
 echo "Here we go..."
 
 ## To change text...
