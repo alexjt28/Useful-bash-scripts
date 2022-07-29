@@ -19,53 +19,19 @@ module load nco
 ## To change text...
 ## VIM Editor Command -> :%s/change_from/change_to/
 
-#-----------------------------------------------------------------------------------------------------------
-# Example used in this file is appending a variable from a single variable time series to a time series 
-# file containing many variables
+#---------------------------------------------------------------------------------------------------------------------------------------
+# Example used in this file is appending a variable from a single variable time series to a time series file containing many variables
 # Case: b.e12.B1850C5.f19_g16.i06ka.04
-#-----------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------------------------
 
-## Make monthly averaged files for specified years (ex. Jan from 0091-0100)
+## Convert time series file to netCDF3 so the "ncks" command will work with it
+ncks -3 b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.timeseries_of_all_vars.0301-0400.nc b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.timeseries_of_all_vars.0301-0400.nc
 
-echo "Making monthly average files..."
+echo "Converted to netCDF3"
 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-01.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_01.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-02.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_02.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-03.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_03.nc
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-04.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_04.nc
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-05.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_05.nc
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-06.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_06.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-07.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_07.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-08.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_08.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-09.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_09.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-10.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_10.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-11.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_11.nc 
-ncra [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-12.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_12.nc 
+## Append all desired variables from the original file to the final file
+ 
+ncks -A -v PRECC b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.PRECC.0301-0400.nc b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.timeseries_of_all_vars.0301-0400.nc
+ncks -A -v PRECL b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.PRECL.0301-0400.nc b.e12.B1850C5.f19_g16.i06ka.04.cam.h0.timeseries_of_all_vars.0301-0400.nc
 
-echo "Monthly average files created."
-
-## Concatenate individual month files into climatology file
-
-echo "Concatenating into climatology file..."
-
-ncrcat f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_{01,02,03,04,05,06,07,08,09,10,11,12}.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100.climo.nc
-
-echo "Climatology file created."
-
-## Remove extra files
-
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_01.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_02.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_03.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_04.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_05.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_06.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_07.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_08.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_09.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_10.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_11.nc
-rm f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0091-0100_12.nc
-
-echo "Extra files deleted. All done!"
-
+echo "Done appending. All done!"
