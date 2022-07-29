@@ -19,7 +19,7 @@ echo "Here we go..."
 module load nco
 
 ## To change text...
-## VIM Editor Command -> :%s/12ka.01/12ka.01/
+## VIM Editor Command -> :%s/change_from/change_to/
 
 #-----------------------------------------------------------------------------------------------------------
 # Example used in this file is calculating a climatology file from years 91-100 of the following iCESM case:
