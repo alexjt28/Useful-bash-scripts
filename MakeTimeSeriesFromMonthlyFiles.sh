@@ -31,7 +31,7 @@ module load nco
 
 echo "Making time series file..."
 
-ncrcat [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.0{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-{01,02,03,04,05,06,07,08,09,10,11,12}.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.timeseries_of_every_var.0091-0100.nc
+ncrcat [/filepath/to/case/]f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.{0091,0092,0093,0094,0095,0096,0097,0098,0099,0100}-{01,02,03,04,05,06,07,08,09,10,11,12}.nc f.e12.F_1850_CAM5.wiso.f19.0ka.002.cam.h0.timeseries_of_every_var.0091-0100.nc
 
 echo "Time series file created."
 
