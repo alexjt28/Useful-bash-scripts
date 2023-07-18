@@ -14,6 +14,9 @@ MakeTimeSeriesFromMonthlyFiles.sh            -> condenses monthly netCDF files i
 
 POP_MakeTimeSeriesFromMonthlyFiles.sh        -> condenses ocean model netCDF files into a single time series file
 
+download_MERRA2.sh                           -> takes txt file of URLs for individual netCDF files, downloads them all, concatenates them all 
+                                                into a single netCDF file, and deletes the individual netCDF files
+                                                
 NOTE: All files in this directory use NCO operator commands. Instructions for downloading NCO can be found
 here (https://sourceforge.net/projects/nco/). 
 
