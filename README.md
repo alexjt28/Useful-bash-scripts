@@ -12,6 +12,8 @@ MakeClimatologyFileFromMonthlyFiles.sh       -> makes average climatology file f
 
 MakeTimeSeriesFromMonthlyFiles.sh            -> condenses monthly netCDF files into a single time series file
 
+MakeTimeSeriesFromScenarioMonthlyFiles.sh    -> condenses monthly netCDF files from different model scenarios into a single time series file
+
 POP_MakeTimeSeriesFromMonthlyFiles.sh        -> condenses ocean model netCDF files into a single time series file
 
 download_MERRA2.sh                           -> takes txt file of URLs for individual netCDF files, downloads them all, concatenates them all 
